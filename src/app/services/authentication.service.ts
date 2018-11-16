@@ -38,7 +38,7 @@ export class AuthenticationService {
 
     const resp = this.httpClient.post('http://localhost:3000/auth/v1/isAuthenticated', {}, httpOptions)
       .map(response => {
-        if (response) {
+        if (response && response['isAuthenticated']) {
           return response['isAuthenticated'];
         }
         return false;
