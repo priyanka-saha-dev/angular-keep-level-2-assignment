@@ -11,8 +11,9 @@ import { AuthenticationService } from '../services/authentication.service';
 export class LoginComponent {
     username = new FormControl();
     password = new FormControl();
+
     submitMessage: string;
-    
+
     constructor(private routerSvc: RouterService,
       private authSvc: AuthenticationService) {
 
@@ -23,10 +24,7 @@ export class LoginComponent {
         'username': this.username.value,
         'password': this.password.value,
       };
-
-      let authObs = this.authSvc.authenticateUser(credentials);
-
-      
+      const authObs = this.authSvc.authenticateUser(credentials);
       authObs.subscribe(
         resp => {
           if (resp) {
